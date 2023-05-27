@@ -33,10 +33,10 @@ app.post("/", function (req, res) {
 
   const jsonData = JSON.stringify(data);
 
-  const url = "https://us8.api.mailchimp.com/3.0/lists/d93e909ec96";
+  const url = "https://usX.api.mailchimp.com/3.0/lists/{list_id}";
   const options = {
     method: "POST", // Method for post request
-    auth: "mindlessfeats:c0ffc527fd59e9192ae09100bb2255ef-us8", // Authenticating to mailchimp servers using API key to post data. Format - "anystring:apikey"
+    auth: "{name:apikey}", // Authenticating to mailchimp servers using API key to post data. Format - "anystring:apikey"
   };
 
   // Have to make a constant to store the request to mailchimp servers and pass jsonData as a parameter
@@ -62,9 +62,6 @@ app.post("/failure-redirect", function (req, res) {
   res.redirect("/");
 });
 
-app.listen(process.env.PORT, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log("App running on port 3000");
 });
-
-// c0ffc527fd59e9192ae09100bb2255ef-us8 - APIkey
-// 93e909ec96 - list id
